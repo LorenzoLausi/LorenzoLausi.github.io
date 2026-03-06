@@ -25,10 +25,10 @@ Beyond my academic curriculum, I am deeply interested in the research of advance
 ## 💻 Academic Projects
 A selection of my recent implementations and research reports:
 
-* **EQML Project:** Implementation and research report on Machine Learning models.
-  * 📄 [Report (PDF)](Lorenzo_Lausi_EQML.pdf)
-  * 📓 [Code (Jupyter Notebook)](Lorenzo_Lausi_EQML.ipynb)
-* **Progetto Metodi:** Academic project focusing on mathematical methods and their computational applications.
-  * 📂 [View Project](progetto_metodi)
+* **Earthquake ML,Physics-Driven P for S-Wave Forecasting:** Implementation and research report on Machine Learning models.
+  * 📄 [Report](Lorenzo_Lausi_EQML.pdf)
+  * 📓 [Notebook](https://colab.research.google.com/drive/1D7RwJjpFA-PRsKq1qWkDQF-ZaG2sthuw?usp=sharingì)
+* **Network dynamics through mean field equations:** Academic project focusing on mathematical methods and their computational applications.
+  * 📂 [Project](progetto_metodi)
 
 ---
