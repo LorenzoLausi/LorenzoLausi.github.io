@@ -6,7 +6,7 @@
 ---
 
 ## 🎓 Academic Profile & Positions
-* **Current:** Third-year merit-based undergraduate student in [Mathematical Sciences for Artificial Intelligence (SMIA)](https://www.corsidilaurea.uniroma1.it/it/corso/2022/31778/home) at Sapienza University of Rome.
+* **Education:** BSc Graduate in [Mathematical Sciences for Artificial Intelligence (SMIA)](https://www.corsidilaurea.uniroma1.it/it/corso/2022/31778/home) from Sapienza University of Rome (**110/110 *cum laude***)
 * **[2024 - 2025]:** Laboratory Assistant at the Mathematical Computing Center, Sapienza University.
 * **[2026 - Present]:** Academic Tutor - [Machine Learning for Signal Processing](https://danilocomminiello.site.uniroma1.it/teaching/mlsp). Feel free to check out [my contribution](https://github.com/kpnss/MLSP_notebook_review).
 * **[2026 - Present]:** Member of the AI Committee at the [Dipartimento di Matematica Guido Castelnuovo](https://www.mat.uniroma1.it/index.php/it/commissioni-del-dipartimento) | ✉️ [commissione-ia@mat.uniroma1.it](mailto:commissione-ia@mat.uniroma1.it).
