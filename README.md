@@ -34,7 +34,7 @@ A selection of my recent implementations and research reports:
   * 📂 [Project](progetto_metodi)
 * **Importance of MLP in attention mechanisms:** Research paper proving the fundamental role of MLP layers in Transformers through the Kronecker product.
   * 📄 [Paper](MLP_Unchained.pdf)
-* **Generative Learning of Diffusion Models:** Analysis of the generative mechanisms of Diffusion Models through statistical mechanics and complex systems theory[cite: 1]. The research characterizes the regimes in which effective learning occurs and studies the system's behavior through phase transition theory[cite: 1].
+* **Generative Learning of Diffusion Models:** Analysis of the generative mechanisms of Diffusion Models through statistical mechanics and complex systems theor. The research characterizes the regimes in which effective learning occurs and studies the system's behavior through phase transition theory.
   * 📄 [Thesis](Tesi_Lorenzo_Lausi_inglese_finale.pdf)
   * 📊 [Presentation](Tesi_Lorenzo_Lausi_presentazione.pptx)
   * 📓 [Notebook](https://colab.research.google.com/drive/1JSG1GwFdAOnDdOd8TowxLLAUsIECTOu6?usp=sharing)
