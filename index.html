@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,6 +33,7 @@
             text-align: center;
             overflow-y: auto;
             box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+            z-index: 10;
         }
         .profile-pic {
             width: 150px;
@@ -64,7 +65,6 @@
         .nav-menu li {
             margin-bottom: 15px;
             border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
         }
         .nav-menu a {
             color: #333;
@@ -72,11 +72,14 @@
             font-weight: bold;
             font-size: 1.1em;
             display: block;
-            transition: color 0.3s ease;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        .nav-menu a:hover {
+        .nav-menu a:hover, .nav-menu a.active {
             color: #0a9396;
-            padding-left: 5px;
+            padding-left: 10px;
+            border-left: 3px solid #0a9396;
         }
 
         /* Contenuto principale */
@@ -87,9 +90,20 @@
             max-width: 1200px;
         }
         
-        section { 
-            margin-bottom: 50px; 
+        /* Gestione sezioni a scomparsa */
+        .content-section {
+            display: none; /* Nasconde tutte le sezioni di default */
+            animation: fadeIn 0.5s;
         }
+        .content-section.active-section {
+            display: block; /* Mostra solo la sezione attiva */
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         h2 {
             color: #005f73;
             border-bottom: 2px solid #0a9396;
@@ -97,6 +111,7 @@
             margin-bottom: 25px;
             font-size: 1.8em;
         }
+        h3 { color: #005f73; margin-bottom: 15px; font-size: 1.3em;}
         
         .project-item { 
             background: white; 
@@ -106,7 +121,6 @@
             border-left: 4px solid #0a9396; 
             margin-bottom: 25px; 
         }
-        .project-item h3 { margin-bottom: 15px; color: #333; }
 
         /* Stili tendina Tutoraggio */
         details {
@@ -129,7 +143,7 @@
         /* Bottoni e link */
         .cv-button {
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 20px;
             padding: 10px 20px;
             background-color: #005f73;
             color: white;
@@ -151,7 +165,7 @@
         a { color: #0a9396; text-decoration: none; font-weight: bold; }
         a:hover { text-decoration: underline; }
 
-        /* Responsive: Adatta il layout per schermi piccoli (es. smartphone) */
+        /* Responsive */
         @media (max-width: 850px) {
             body { flex-direction: column; }
             .sidebar {
@@ -163,7 +177,9 @@
                 border-bottom: 2px solid #e0e0e0;
             }
             .nav-menu { text-align: center; }
-            .nav-menu li { border-bottom: none; display: inline-block; margin: 0 10px; }
+            .nav-menu li { border-bottom: none; display: inline-block; margin: 0 5px; }
+            .nav-menu a { padding: 5px 10px; border-left: none; }
+            .nav-menu a:hover, .nav-menu a.active { border-left: none; border-bottom: 3px solid #0a9396; padding-left: 10px; }
             .main-content {
                 margin-left: 0;
                 padding: 30px 5%;
@@ -180,10 +196,10 @@
         <div class="tagline">Student of Mathematics x AI at @Sapienza</div>
         
         <ul class="nav-menu">
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#positions">Current Positions & News</a></li>
-            <li><a href="#research">Research Interests</a></li>
-            <li><a href="#projects">Academic Projects</a></li>
+            <li><a onclick="showSection('about', this)" class="active">About Me</a></li>
+            <li><a onclick="showSection('positions', this)">Curriculum</a></li>
+            <li><a onclick="showSection('research', this)">Research Interests</a></li>
+            <li><a onclick="showSection('projects', this)">Academic Projects</a></li>
         </ul>
     </aside>
 
@@ -191,24 +207,30 @@
     <main class="main-content">
         
         <!-- SEZIONE: ABOUT ME -->
-        <section id="about">
+        <section id="about" class="content-section active-section">
             <h2>About Me</h2>
             <div class="project-item" style="border-left: none; padding: 15px 0; background: transparent; box-shadow: none;">
                 <p>Hi everyone, I'm Lorenzo Lausi.</p>
-                <p style="margin-top: 10px;">I am a BSc Graduate in <strong>Mathematical Sciences for Artificial Intelligence (SMIA)</strong> at Sapienza University of Rome (<strong>110/110 <em>cum laude</em></strong>).</p>
-                <p style="margin-top: 10px;">If you would like to dive deeper into my background and technical skills, feel free to check out my resume:</p>
+                <p style="margin-top: 15px;">I am a BSc Graduate in <strong>Mathematical Sciences for Artificial Intelligence (SMIA)</strong> at Sapienza University of Rome (<strong>110/110 <em>cum laude</em></strong>).</p>
+                
+                <p style="margin-top: 15px;">Academically, I am deeply fascinated by <strong>Learning Theory</strong>. I like to view Deep Learning as the ability to generate and create something entirely new, starting from the knowledge we manage to extract. I had the opportunity to thoroughly investigate this theme during my thesis, aiming to understand in which specific regimes an effective learning process occurs within modern neural networks. By defining the parameters that characterize this concept, I observed how the quality of generation strictly depends on the underlying learning process, investigating all these concepts through tools derived from <strong>statistical mechanics</strong> and <strong>complex systems theory</strong>.</p>
+                
+                <p style="margin-top: 15px;">Beyond my academic life, I am a huge sports enthusiast. I love playing tennis, skiing, padel, surfing, and sailing. I am also a passionate football fan—especially of AS Roma—and I love going to the stadium. In my free time, I enjoy cooking and reading, with a particular fondness for Nietzsche's philosophy and classical literature like Luigi Pirandello.</p>
+
+                <p style="margin-top: 15px;">If you would like to dive deeper into my background and technical skills, feel free to check out my resume:</p>
                 <a href="Lorenzo_Lausi_CV.pdf" target="_blank" class="cv-button">View my short CV</a>
             </div>
         </section>
 
         <!-- SEZIONE: POSITIONS & NEWS -->
-        <section id="positions">
-            <h2>Current Positions & News</h2>
+        <section id="positions" class="content-section">
+            <h2>Curriculum</h2>
+            
             <div class="project-item">
-                <ul>
-                    <li><strong>[2026 - Present]:</strong> Member of the AI Committee at the <a href="#" target="_blank">Dipartimento di Matematica Guido Castelnuovo</a> | ✉️ <a href="mailto:commissione-ia@mat.uniroma1.it">commissione-ia@mat.uniroma1.it</a></li>
-                    <li><strong>[2024 - 2025]:</strong> Laboratory Assistant at the Mathematical Computing Center, Sapienza University.</li>
-                    <li style="list-style: none;">
+                <h3>Current Positions</h3>
+                <ul style="margin-left: 20px;">
+                    <li style="margin-bottom: 10px;"><strong>[2026 - Present]:</strong> Member of the AI Committee at the <a href="#" target="_blank">Dipartimento di Matematica Guido Castelnuovo</a> | ✉️ <a href="mailto:commissione-ia@mat.uniroma1.it">commissione-ia@mat.uniroma1.it</a></li>
+                    <li style="list-style: none; margin-left: -20px;">
                         <details>
                             <summary>[2026 - Present]: Academic Tutor - Machine Learning for Signal Processing</summary>
                             <ul>
@@ -221,14 +243,25 @@
                     </li>
                 </ul>
             </div>
+
+            <div class="project-item" style="border-left-color: #666;">
+                <h3 style="color: #666;">Past Experience</h3>
+                <ul style="margin-left: 20px;">
+                    <li><strong>[2024 - 2025]:</strong> Laboratory Assistant at the Mathematical Computing Center, Sapienza University.</li>
+                </ul>
+            </div>
         </section>
         
         <!-- SEZIONE: RESEARCH INTERESTS -->
-        <section id="research">
+        <section id="research" class="content-section">
             <h2>Research Interests & Technical Focus</h2>
             <div class="project-item">
-                <p>Beyond my academic curriculum, I am deeply interested in the research of advanced mathematical models and the theoretical foundations of Artificial Intelligence. My core areas of investigation include:</p>
+                <p>During my studies, I have become increasingly fascinated by <strong>Learning Theory</strong> and the generative capabilities of Deep Learning—the power to create something new from acquired knowledge.</p>
+                <p style="margin-top: 15px;">Specifically, my current research focuses on finding ways to explain how optimizers learn through the lens of <strong>Statistical Learning Theory</strong>. I am investigating how the Test Loss varies as a function of different hyperparameters—such as architecture choice, parameter count, learning rate, and training duration—in complex architectures like Diffusion Models.</p>
+                
+                <p style="margin-top: 15px;">My core areas of investigation include:</p>
                 <ul style="margin-top: 15px; padding-left: 20px;">
+                    <li style="margin-bottom: 8px;"><strong>Statistical Learning Theory & Optimization:</strong> Analyzing how optimizers learn and how Test Loss scales with hyperparameters in Generative AI.</li>
                     <li style="margin-bottom: 8px;"><strong>Statistical Mechanics & Deep Learning:</strong> Analytical explanation of neural networks and understanding their learning processes through statistical physics.</li>
                     <li style="margin-bottom: 8px;"><strong>Mathematical Modeling & PDEs:</strong> Study and application of Partial Differential Equations (PDEs) within AI models.</li>
                     <li><strong>Signal Processing & Denoising:</strong> Exploration of SOTA generative approaches operating in the time-frequency domain, with a specific focus on <em>denoising</em> techniques.</li>
@@ -237,7 +270,7 @@
         </section>
 
         <!-- SEZIONE: ACADEMIC PROJECTS -->
-        <section id="projects">
+        <section id="projects" class="content-section">
             <h2>Academic Projects</h2>
             <div class="project-item">
                 <p style="margin-bottom: 20px;">A selection of my recent implementations and research reports:</p>
@@ -274,5 +307,31 @@
         </section>
 
     </main>
+
+    <!-- Script per gestire la navigazione tra le sezioni -->
+    <script>
+        function showSection(sectionId, clickedElement) {
+            // 1. Nascondi tutte le sezioni
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active-section');
+            });
+
+            // 2. Rimuovi la classe 'active' da tutti i link del menu
+            const links = document.querySelectorAll('.nav-menu a');
+            links.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // 3. Mostra la sezione cliccata
+            document.getElementById(sectionId).classList.add('active-section');
+
+            // 4. Evidenzia il link cliccato nel menu
+            clickedElement.classList.add('active');
+            
+            // Su mobile, fai scroll verso l'alto quando si cambia sezione
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
 </body>
 </html>
