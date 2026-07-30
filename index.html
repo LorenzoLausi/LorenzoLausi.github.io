@@ -8,37 +8,112 @@
     <meta name="description" content="Personal portfolio of Lorenzo Lausi, BSc Graduate in Mathematical Sciences for Artificial Intelligence (SMIA) at Sapienza University of Rome. Focus on Deep Learning, PDEs, and Denoising.">
 
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f9f9f9; }
-        
-        /* Updated header styles to accommodate the profile picture */
-        .profile-header { 
-            display: flex; 
-            align-items: center; 
-            border-bottom: 2px solid #005f73; 
-            padding-bottom: 20px; 
-            margin-bottom: 30px; 
-            gap: 20px;
+        /* Impostazioni generali */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            background-color: #f9f9f9; 
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Barra laterale (Sidebar) */
+        .sidebar {
+            width: 300px;
+            background-color: #ffffff;
+            border-right: 2px solid #e0e0e0;
+            padding: 40px 20px;
+            position: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
         }
         .profile-pic {
-            width: 130px;
-            height: 130px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #0a9396;
+            margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .header-text h1 { color: #005f73; margin: 0 0 5px 0; }
-        .tagline { font-style: italic; color: #666; font-size: 1.1em; }
+        .sidebar h1 { 
+            color: #005f73; 
+            font-size: 1.8em; 
+            margin-bottom: 5px; 
+        }
+        .tagline { 
+            font-style: italic; 
+            color: #666; 
+            font-size: 1em; 
+            margin-bottom: 30px; 
+        }
         
-        section { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .project-item { border-left: 4px solid #0a9396; padding-left: 15px; margin: 20px 0; }
+        /* Menu di navigazione */
+        .nav-menu {
+            list-style: none;
+            width: 100%;
+            text-align: left;
+        }
+        .nav-menu li {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .nav-menu a {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        .nav-menu a:hover {
+            color: #0a9396;
+            padding-left: 5px;
+        }
+
+        /* Contenuto principale */
+        .main-content {
+            margin-left: 300px; /* Lascia spazio alla sidebar */
+            padding: 50px 8%;
+            flex: 1;
+            max-width: 1200px;
+        }
         
-        /* Dropdown styles for Tutoraggio */
+        section { 
+            margin-bottom: 50px; 
+        }
+        h2 {
+            color: #005f73;
+            border-bottom: 2px solid #0a9396;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        
+        .project-item { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 4px solid #0a9396; 
+            margin-bottom: 25px; 
+        }
+        .project-item h3 { margin-bottom: 15px; color: #333; }
+
+        /* Stili tendina Tutoraggio */
         details {
             background-color: #f1f8f9;
             padding: 10px 15px;
             border-radius: 8px;
-            margin-top: 10px;
+            margin-top: 15px;
             border: 1px solid #cce3e6;
         }
         summary {
@@ -51,6 +126,7 @@
         summary:hover { color: #0a9396; }
         details > ul { margin-top: 10px; padding-left: 20px; }
 
+        /* Bottoni e link */
         .cv-button {
             display: inline-block;
             margin-top: 15px;
@@ -62,110 +138,141 @@
             font-weight: bold;
             transition: background-color 0.3s;
         }
-        .cv-button:hover {
-            background-color: #0a9396;
-        }
-        ul.project-links {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        ul.project-links > li {
-            margin-bottom: 20px;
-        }
+        .cv-button:hover { background-color: #0a9396; }
+        
+        ul.project-links { list-style-type: none; }
+        ul.project-links > li { margin-bottom: 25px; }
         .sub-links {
             list-style-type: none;
-            padding-left: 0;
-            margin-top: 5px;
             display: flex;
             gap: 15px;
+            margin-top: 8px;
         }
-        a {
-            color: #0a9396;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            text-decoration: underline;
+        a { color: #0a9396; text-decoration: none; font-weight: bold; }
+        a:hover { text-decoration: underline; }
+
+        /* Responsive: Adatta il layout per schermi piccoli (es. smartphone) */
+        @media (max-width: 850px) {
+            body { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                position: relative;
+                height: auto;
+                padding: 30px 20px;
+                border-right: none;
+                border-bottom: 2px solid #e0e0e0;
+            }
+            .nav-menu { text-align: center; }
+            .nav-menu li { border-bottom: none; display: inline-block; margin: 0 10px; }
+            .main-content {
+                margin-left: 0;
+                padding: 30px 5%;
+            }
         }
     </style>
 </head>
 <body>
-    <header class="profile-header">
+
+    <!-- BARRA LATERALE -->
+    <aside class="sidebar">
         <img src="LL_foto.jpeg" alt="Lorenzo Lausi" class="profile-pic">
-        <div class="header-text">
-            <h1>Lorenzo Lausi</h1>
-            <div class="tagline">Student of Mathematics x AI at @Sapienza</div>
-        </div>
-    </header>
-
-    <section>
-        <h2>Hi everyone, I'm Lorenzo Lausi</h2>
+        <h1>Lorenzo Lausi</h1>
+        <div class="tagline">Student of Mathematics x AI at @Sapienza</div>
         
-        <div class="project-item">
-            <h3>Academic Profile & Positions</h3>
-            <ul>
-                <li><strong>Education:</strong> BSc Graduate in <a href="https://www.corsidilaurea.uniroma1.it/it/corso/2022/31778/home" target="_blank" rel="noopener noreferrer">Mathematical Sciences for Artificial Intelligence (SMIA)</a> at Sapienza University of Rome (<strong>110/110 <em>cum laude</em></strong>).</li>
-                <li><strong>[2026 - Present]:</strong> Member of the AI Committee at the <a href="#" target="_blank">Dipartimento di Matematica Guido Castelnuovo</a> | ✉️ <a href="mailto:commissione-ia@mat.uniroma1.it">commissione-ia@mat.uniroma1.it</a></li>
-                <li><strong>[2024 - 2025]:</strong> Laboratory Assistant at the Mathematical Computing Center, Sapienza University.</li>
-                <li style="list-style: none;">
-                    <details>
-                        <summary>[2026 - Present]: Academic Tutor - Machine Learning for Signal Processing</summary>
-                        <ul>
-                            <li><strong>Course details:</strong> <a href="https://danilocomminiello.site.uniroma1.it/teaching/mlsp" target="_blank">MLSP Official Page</a></li>
-                            <li>In collaborazione con Michele Capponi (<a href="mailto:capponi.1997425@studenti.uniroma1.it">capponi.1997425@studenti.uniroma1.it</a>).</li>
-                            <li><strong>Nostro contributo:</strong> <a href="https://github.com/kpnss/MLSP_notebook_review" target="_blank">GitHub Repository</a></li>
-                            <li><strong>Codice Classroom:</strong> Access code: <code>gajsihsp</code></li>
+        <ul class="nav-menu">
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#positions">Current Positions & News</a></li>
+            <li><a href="#research">Research Interests</a></li>
+            <li><a href="#projects">Academic Projects</a></li>
+        </ul>
+    </aside>
+
+    <!-- CONTENUTO PRINCIPALE -->
+    <main class="main-content">
+        
+        <!-- SEZIONE: ABOUT ME -->
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="project-item" style="border-left: none; padding: 15px 0; background: transparent; box-shadow: none;">
+                <p>Hi everyone, I'm Lorenzo Lausi.</p>
+                <p style="margin-top: 10px;">I am a BSc Graduate in <strong>Mathematical Sciences for Artificial Intelligence (SMIA)</strong> at Sapienza University of Rome (<strong>110/110 <em>cum laude</em></strong>).</p>
+                <p style="margin-top: 10px;">If you would like to dive deeper into my background and technical skills, feel free to check out my resume:</p>
+                <a href="Lorenzo_Lausi_CV.pdf" target="_blank" class="cv-button">View my short CV</a>
+            </div>
+        </section>
+
+        <!-- SEZIONE: POSITIONS & NEWS -->
+        <section id="positions">
+            <h2>Current Positions & News</h2>
+            <div class="project-item">
+                <ul>
+                    <li><strong>[2026 - Present]:</strong> Member of the AI Committee at the <a href="#" target="_blank">Dipartimento di Matematica Guido Castelnuovo</a> | ✉️ <a href="mailto:commissione-ia@mat.uniroma1.it">commissione-ia@mat.uniroma1.it</a></li>
+                    <li><strong>[2024 - 2025]:</strong> Laboratory Assistant at the Mathematical Computing Center, Sapienza University.</li>
+                    <li style="list-style: none;">
+                        <details>
+                            <summary>[2026 - Present]: Academic Tutor - Machine Learning for Signal Processing</summary>
+                            <ul>
+                                <li><strong>Course details:</strong> <a href="https://danilocomminiello.site.uniroma1.it/teaching/mlsp" target="_blank">MLSP Official Page</a></li>
+                                <li>In collaborazione con Michele Capponi (<a href="mailto:capponi.1997425@studenti.uniroma1.it">capponi.1997425@studenti.uniroma1.it</a>).</li>
+                                <li><strong>Nostro contributo:</strong> <a href="https://github.com/kpnss/MLSP_notebook_review" target="_blank">GitHub Repository</a></li>
+                                <li><strong>Codice Classroom:</strong> Access code: <code>gajsihsp</code></li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- SEZIONE: RESEARCH INTERESTS -->
+        <section id="research">
+            <h2>Research Interests & Technical Focus</h2>
+            <div class="project-item">
+                <p>Beyond my academic curriculum, I am deeply interested in the research of advanced mathematical models and the theoretical foundations of Artificial Intelligence. My core areas of investigation include:</p>
+                <ul style="margin-top: 15px; padding-left: 20px;">
+                    <li style="margin-bottom: 8px;"><strong>Statistical Mechanics & Deep Learning:</strong> Analytical explanation of neural networks and understanding their learning processes through statistical physics.</li>
+                    <li style="margin-bottom: 8px;"><strong>Mathematical Modeling & PDEs:</strong> Study and application of Partial Differential Equations (PDEs) within AI models.</li>
+                    <li><strong>Signal Processing & Denoising:</strong> Exploration of SOTA generative approaches operating in the time-frequency domain, with a specific focus on <em>denoising</em> techniques.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SEZIONE: ACADEMIC PROJECTS -->
+        <section id="projects">
+            <h2>Academic Projects</h2>
+            <div class="project-item">
+                <p style="margin-bottom: 20px;">A selection of my recent implementations and research reports:</p>
+                <ul class="project-links">
+                    <li>
+                        <strong>Generative Learning of Diffusion Models:</strong> Analysis of the generative mechanisms of Diffusion Models through statistical mechanics and complex systems theory. The research characterizes the regimes in which effective learning occurs and studies the system's behavior through phase transition theory.
+                        <ul class="sub-links">
+                            <li>📄 <a href="Tesi_Lorenzo_Lausi_inglese_finale.pdf" target="_blank">Thesis</a></li>
+                            <li>📊 <a href="Tesi_Lorenzo_Lausi_presentazione.pptx" target="_blank">Presentation</a></li>
+                            <li>📓 <a href="https://colab.research.google.com/drive/1JSG1GwFdAOnDdOd8TowxLLAUsIECTOu6?usp=sharing" target="_blank">Notebook</a></li>
                         </ul>
-                    </details>
-                </li>
-            </ul>
-            <p>If you would like to know more about my background, you can consult my brief CV here:</p>
-            <a href="Lorenzo_Lausi_CV.pdf" target="_blank" class="cv-button">View my short CV</a>
-        </div>
-        
-        <div class="project-item">
-            <h3>Research Interests & Technical Focus</h3>
-            <p>Beyond my academic curriculum, I am deeply interested in the research of advanced mathematical models and the theoretical foundations of Artificial Intelligence. My core areas of investigation include:</p>
-            <ul>
-                <li><strong>Statistical Mechanics & Deep Learning:</strong> Analytical explanation of neural networks and understanding their learning processes through statistical physics.</li>
-                <li><strong>Mathematical Modeling & PDEs:</strong> Study and application of Partial Differential Equations (PDEs) within AI models.</li>
-                <li><strong>Signal Processing & Denoising:</strong> Exploration of SOTA generative approaches operating in the time-frequency domain, with a specific focus on <em>denoising</em> techniques.</li>
-            </ul>
-        </div>
+                    </li>
+                    <li>
+                        <strong>Earthquake ML: Physics-Driven P for S-Wave Forecasting:</strong> Implementation and research report on Machine Learning models.
+                        <ul class="sub-links">
+                            <li>📄 <a href="Lorenzo_Lausi_EQML.pdf" target="_blank">Report</a></li>
+                            <li>📓 <a href="https://colab.research.google.com/drive/1D7RwJjpFA-PRsKq1qWkDQF-ZaG2sthuw?usp=sharing" target="_blank">Notebook</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Network dynamics through mean field equations:</strong> Academic project focusing on mathematical methods and their computational applications.
+                        <ul class="sub-links">
+                            <li>📂 <a href="https://github.com/LorenzoLausi/LorenzoLausi.github.io/blob/main/progetto_metodi.ipynb" target="_blank">Project</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>MLP Unchained:</strong> Theoretical and empirical research exploring the predictive power of MLPs in Transformer architectures using the Kronecker operator.
+                        <ul class="sub-links">
+                            <li>📄 <a href="MLP_Unchained.pdf" target="_blank">Paper</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
 
-        <div class="project-item">
-            <h3>Academic Projects</h3>
-            <p>A selection of my recent implementations and research reports:</p>
-            <ul class="project-links">
-                <li>
-                    <strong>Generative Learning of Diffusion Models:</strong> Analysis of the generative mechanisms of Diffusion Models through statistical mechanics and complex systems theory. The research characterizes the regimes in which effective learning occurs and studies the system's behavior through phase transition theory.
-                    <ul class="sub-links">
-                        <li>📄 <a href="Tesi_Lorenzo_Lausi_inglese_finale.pdf" target="_blank">Thesis</a></li>
-                        <li>📊 <a href="Tesi_Lorenzo_Lausi_presentazione.pptx" target="_blank">Presentation</a></li>
-                        <li>📓 <a href="https://colab.research.google.com/drive/1JSG1GwFdAOnDdOd8TowxLLAUsIECTOu6?usp=sharing" target="_blank">Notebook</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Earthquake ML: Physics-Driven P for S-Wave Forecasting:</strong> Implementation and research report on Machine Learning models.
-                    <ul class="sub-links">
-                        <li>📄 <a href="Lorenzo_Lausi_EQML.pdf" target="_blank">Report</a></li>
-                        <li>📓 <a href="https://colab.research.google.com/drive/1D7RwJjpFA-PRsKq1qWkDQF-ZaG2sthuw?usp=sharing" target="_blank">Notebook</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Network dynamics through mean field equations:</strong> Academic project focusing on mathematical methods and their computational applications.
-                    <ul class="sub-links">
-                        <li>📂 <a href="https://github.com/LorenzoLausi/LorenzoLausi.github.io/blob/main/progetto_metodi.ipynb" target="_blank">Project</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>MLP Unchained:</strong> Theoretical and empirical research exploring the predictive power of MLPs in Transformer architectures using the Kronecker operator.
-                    <ul class="sub-links">
-                        <li>📄 <a href="MLP_Unchained.pdf" target="_blank">Paper</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </section>
+    </main>
 </body>
 </html>
