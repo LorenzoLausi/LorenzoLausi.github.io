@@ -112,6 +112,7 @@
             font-size: 1.8em;
         }
         h3 { color: #005f73; margin-bottom: 15px; font-size: 1.3em;}
+        h4 { color: #005f73; margin-bottom: 12px; font-size: 1.05em; }
         
         .project-item { 
             background: white; 
@@ -122,7 +123,25 @@
             margin-bottom: 25px; 
         }
 
-        /* Stili tendine (details/summary) */
+        .institution-tag {
+            display: inline-block;
+            font-size: 0.75em;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: #0a9396;
+            background-color: #eaf6f7;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .lead-text {
+            font-size: 1.05em;
+            color: #444;
+        }
+
+        /* Stili tendine "semplici" (usate in Curriculum) */
         details {
             background-color: #f1f8f9;
             padding: 10px 15px;
@@ -137,10 +156,126 @@
             cursor: pointer;
             outline: none;
             transition: color 0.3s ease;
+            list-style: none;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after {
+            content: " ▾";
+            font-size: 0.85em;
+        }
+        details[open] summary::after {
+            content: " ▴";
         }
         summary:hover { color: #0a9396; }
         details > ul { margin-top: 10px; padding-left: 20px; }
         details > p { margin-top: 10px; }
+        details > p + p { margin-top: 12px; }
+
+        /* ============================================= */
+        /* Accordion "premium" — usate in Research & Projects */
+        /* ============================================= */
+        details.accordion {
+            background-color: #ffffff;
+            border: 1px solid #e3eef0;
+            border-radius: 14px;
+            padding: 0;
+            margin-top: 16px;
+            box-shadow: 0 2px 10px rgba(0,80,90,0.05);
+            overflow: hidden;
+            transition: box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+        details.accordion:hover {
+            box-shadow: 0 6px 18px rgba(0,80,90,0.09);
+            border-color: #cfe6e8;
+        }
+        details.accordion summary {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 20px 24px;
+            font-size: 1.15em;
+            font-weight: 700;
+            color: #005f73;
+            background: linear-gradient(135deg, #f7fcfd 0%, #ffffff 100%);
+            border-left: 4px solid #0a9396;
+        }
+        details.accordion summary::after { content: none; }
+        details.accordion[open] summary {
+            border-bottom: 1px solid #eef4f5;
+        }
+        details.accordion .accordion-icon {
+            font-size: 1.4em;
+            flex-shrink: 0;
+        }
+        details.accordion .accordion-title {
+            flex-grow: 1;
+        }
+        details.accordion .accordion-subtitle {
+            display: block;
+            font-size: 0.75em;
+            font-weight: 400;
+            color: #789;
+            margin-top: 3px;
+            letter-spacing: 0.2px;
+        }
+        details.accordion .chevron {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #eaf6f7;
+            color: #0a9396;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        details.accordion[open] .chevron {
+            transform: rotate(180deg);
+            background-color: #0a9396;
+            color: #ffffff;
+        }
+        details.accordion .accordion-body {
+            padding: 24px;
+            animation: fadeIn 0.35s ease;
+        }
+        details.accordion .accordion-body > p + p {
+            margin-top: 14px;
+        }
+
+        /* Griglia Core Areas */
+        .core-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+        .core-card {
+            background-color: #f7fbfb;
+            border: 1px solid #e0eef0;
+            border-radius: 10px;
+            padding: 14px 16px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .core-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        }
+        .core-card .core-icon { font-size: 1.2em; margin-right: 6px; }
+        .core-card strong { color: #005f73; display: block; margin-bottom: 4px; }
+        .core-card span.core-body { color: #555; font-size: 0.92em; }
+
+        /* Pull quote */
+        .pull-quote {
+            border-left: 4px solid #0a9396;
+            background-color: #eaf6f7;
+            padding: 16px 20px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            font-style: italic;
+            color: #005f73;
+            border-radius: 0 8px 8px 0;
+        }
 
         /* Badge stile (Tesi, Date, ecc.) */
         .badge {
@@ -181,6 +316,35 @@
         a { color: #0a9396; text-decoration: none; font-weight: bold; }
         a:hover { text-decoration: underline; }
 
+        /* Griglia Academic Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .project-card {
+            background-color: #ffffff;
+            border: 1px solid #e0eef0;
+            border-radius: 10px;
+            padding: 16px 18px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.07);
+        }
+        .project-card h4 { margin-bottom: 6px; }
+        .project-card p {
+            font-size: 0.92em;
+            color: #555;
+            flex-grow: 1;
+            margin-bottom: 10px;
+        }
+        .project-card .sub-links { margin-top: auto; }
+
         /* News list */
         .news-list { list-style: none; }
         .news-list > li {
@@ -213,6 +377,14 @@
                 margin-left: 0;
                 padding: 30px 5%;
             }
+            .core-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            details.accordion summary {
+                padding: 16px 18px;
+                font-size: 1.05em;
+            }
+            .accordion-body { padding: 18px; }
         }
     </style>
 </head>
@@ -270,19 +442,20 @@
             </div>
         </section>
 
-        <!-- SEZIONE: CURRICULUM -->
+        <!-- SEZIONE: CURRICULUM (raggruppato per istituzione) -->
         <section id="positions" class="content-section">
             <h2>Curriculum</h2>
-            
-            <div class="project-item">
-                <h3>Current Positions</h3>
 
+            <!-- SAPIENZA -->
+            <div class="project-item">
+                <span class="institution-tag">Sapienza University of Rome</span>
+                
+                <h4 style="margin-top: 5px;">Current Positions</h4>
                 <details>
                     <summary>[2026 - Present]: Member of the AI Committee at the Dipartimento di Matematica Guido Castelnuovo</summary>
                     <p>Contributed to discussions on AI-related academic and departmental activities at the Department of Mathematics, Sapienza University.</p>
                     <p style="margin-top: 8px;">✉️ <a href="mailto:commissione-ia@mat.uniroma1.it">commissione-ia@mat.uniroma1.it</a></p>
                 </details>
-
                 <details>
                     <summary>[2026 - Present]: Academic Tutor - Machine Learning for Signal Processing</summary>
                     <ul>
@@ -292,32 +465,34 @@
                         <li><strong>Classroom code:</strong> Access code: <code>gajsihsp</code></li>
                     </ul>
                 </details>
-            </div>
 
-            <div class="project-item">
-                <h3>Education</h3>
-
+                <h4 style="margin-top: 25px;">Education</h4>
                 <details>
-                    <summary>[2026 - Present]: MSc in Physics of Complex Systems — International Track, Politecnico di Torino</summary>
-                    <p>International Master's programme in Physics of Complex Systems (LM-44), combining advanced training in statistical physics, stochastic processes, quantum physics, and computational methods.</p>
-                    <p style="margin-top: 8px;">International double-degree programme across Trieste, Turin, and Paris.</p>
-                </details>
-
-                <details>
-                    <summary>[Oct 2023 - Jul 2026]: Bachelor's Degree in Mathematical Sciences for Artificial Intelligence, Sapienza University of Rome</summary>
+                    <summary>[Oct 2023 - Jul 2026]: Bachelor's Degree in Mathematical Sciences for Artificial Intelligence</summary>
                     <ul>
                         <li>Graduated 110/110 <em>cum laude</em>.</li>
                         <li>Bachelor's thesis: <em>Analysis of the Generative Learning of Diffusion Models through Statistical Mechanics and Complex Systems Theory</em>.</li>
                         <li>GPA: 29.5/30.</li>
+                        <li>Enrolled with a full tuition waiver — <strong>Esonero totale tasse per merito</strong> (Sapienza University of Rome).</li>
                     </ul>
                 </details>
-            </div>
 
-            <div class="project-item" style="border-left-color: #666;">
-                <h3 style="color: #666;">Past Experience</h3>
-                <ul style="margin-left: 20px;">
+                <h4 style="margin-top: 25px;">Past Experience</h4>
+                <ul style="margin-left: 20px; margin-top: 10px;">
                     <li><strong>[2024 - 2025]:</strong> Laboratory Assistant at the Mathematical Computing Center, Sapienza University.</li>
                 </ul>
+            </div>
+
+            <!-- POLITECNICO DI TORINO -->
+            <div class="project-item" style="border-left-color: #666;">
+                <span class="institution-tag" style="color: #666; background-color: #eee;">Politecnico di Torino</span>
+
+                <h4 style="margin-top: 5px; color: #555;">Education</h4>
+                <details>
+                    <summary>[2026 - Present]: MSc in Physics of Complex Systems — International Track</summary>
+                    <p>International Master's programme in Physics of Complex Systems (LM-44), combining advanced training in statistical physics, stochastic processes, quantum physics, and computational methods.</p>
+                    <p style="margin-top: 8px;">International double-degree programme across Trieste, Turin, and Paris.</p>
+                </details>
             </div>
         </section>
         
@@ -326,128 +501,116 @@
             <h2>Research Interests & Academic Projects</h2>
 
             <div class="project-item">
-    <h3>Research Interests & Technical Focus</h3>
+                <h3>Research Interests & Technical Focus</h3>
+                <p class="lead-text">During my studies, I have become increasingly interested in understanding <strong>how learning emerges in complex artificial systems</strong>, particularly in Deep Generative Models. My recent work has focused on Diffusion Models, studying their learning dynamics through the combined perspectives of <strong>Statistical Learning Theory, Optimization, and Statistical Mechanics</strong>.</p>
 
-    <p>
-        During my studies, I have become increasingly interested in understanding 
-        <strong>how learning emerges in complex artificial systems</strong>, particularly 
-        in Deep Generative Models. My recent work has focused on Diffusion Models, 
-        studying their learning dynamics through the combined perspectives of 
-        <strong>Statistical Learning Theory, Optimization, and Statistical Mechanics</strong>.
-    </p>
+                <div class="pull-quote">
+                    "How does learning emerge in complex artificial systems — and what does that reveal about generalization and generation?"
+                </div>
 
-    <p style="margin-top: 15px;">
-        My current research investigates how learning depends on different aspects of 
-        model and training dynamics, such as architecture, parameter count, learning 
-        rate, and training duration, and how these factors shape the resulting 
-        generalization and generative capabilities.
-    </p>
+                <p>My current research investigates how learning depends on different aspects of model and training dynamics, such as architecture, parameter count, learning rate, and training duration, and how these factors shape the resulting generalization and generative capabilities.</p>
 
-    <p style="margin-top: 20px;"><strong>Core Areas</strong></p>
+                <details class="accordion">
+                    <summary>
+                        <span class="accordion-icon">🧭</span>
+                        <span class="accordion-title">Core Areas<span class="accordion-subtitle">Six focus areas of my research</span></span>
+                        <span class="chevron">▾</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <div class="core-grid">
+                            <div class="core-card">
+                                <strong><span class="core-icon">📈</span>Statistical Learning Theory & Optimization</strong>
+                                <span class="core-body">Understanding generalization, learning dynamics, and how optimization shapes the behavior of complex models.</span>
+                            </div>
+                            <div class="core-card">
+                                <strong><span class="core-icon">⚛️</span>Statistical Mechanics of Learning</strong>
+                                <span class="core-body">Studying learning as an emergent phenomenon through the mathematical framework of statistical physics and complex systems.</span>
+                            </div>
+                            <div class="core-card">
+                                <strong><span class="core-icon">🔎</span>Information Theory & Learning</strong>
+                                <span class="core-body">Investigating how information is extracted and represented, distinguishing relevant structure from irrelevant variability.</span>
+                            </div>
+                            <div class="core-card">
+                                <strong><span class="core-icon">🧬</span>Deep Generative Models</strong>
+                                <span class="core-body">Understanding how learned representations enable models to generalize and generate new configurations.</span>
+                            </div>
+                            <div class="core-card">
+                                <strong><span class="core-icon">🧮</span>Mathematical Modeling & Dynamical Systems</strong>
+                                <span class="core-body">Using mathematical models, stochastic processes, and differential equations to describe learning and complex systems.</span>
+                            </div>
+                            <div class="core-card">
+                                <strong><span class="core-icon">📡</span>Signal Processing & Scientific ML</strong>
+                                <span class="core-body">Exploring machine learning methods for extracting structure from complex and noisy physical signals.</span>
+                            </div>
+                        </div>
+                    </div>
+                </details>
 
-    <ul style="margin-top: 15px; padding-left: 20px;">
-        <li style="margin-bottom: 8px;">
-            <strong>Statistical Learning Theory & Optimization:</strong>
-            Understanding generalization, learning dynamics, and how optimization 
-            shapes the behavior of complex models.
-        </li>
-        <li style="margin-bottom: 8px;">
-            <strong>Statistical Mechanics of Learning:</strong>
-            Studying learning as an emergent phenomenon through the mathematical 
-            framework of statistical physics and complex systems.
-        </li>
-        <li style="margin-bottom: 8px;">
-            <strong>Information Theory & Learning:</strong>
-            Investigating how information is extracted and represented, and how 
-            relevant structure can be distinguished from irrelevant variability.
-        </li>
-        <li style="margin-bottom: 8px;">
-            <strong>Deep Generative Models:</strong>
-            Understanding how learned representations of complex data distributions 
-            enable models to generalize and generate new configurations.
-        </li>
-        <li style="margin-bottom: 8px;">
-            <strong>Mathematical Modeling & Dynamical Systems:</strong>
-            Using mathematical models, stochastic processes, and differential 
-            equations to describe learning and complex systems.
-        </li>
-        <li>
-            <strong>Signal Processing & Scientific Machine Learning:</strong>
-            Exploring machine learning methods for extracting structure from 
-            complex and noisy physical signals.
-        </li>
-    </ul>
-
-    <p style="margin-top: 25px;">
-        <strong>Toward a Theory of Learning</strong>
-    </p>
-
-    <p style="margin-top: 15px;">
-        My broader research interest is the development of a 
-        <strong>general theory of learning</strong>: a mathematical framework capable 
-        of explaining how artificial and biological systems extract structure from 
-        information and develop internal representations of the underlying phenomena.
-    </p>
-
-    <p style="margin-top: 15px;">
-        From this perspective, I see <strong>Information Theory</strong> as a fundamental 
-        language for understanding learning. A learning system receives information 
-        about a complex underlying structure, and the central question is how this 
-        information is transformed into an internal representation that preserves 
-        relevant structure while discarding irrelevant variability.
-    </p>
-
-    <p style="margin-top: 15px;">
-        This perspective naturally connects <strong>information, representation, 
-        generalization, and generation</strong>. Statistical Learning Theory provides 
-        a framework for understanding how the structure captured by a learned 
-        representation allows a model to generalize beyond the specific observations 
-        from which it learned. In generative models, this ability to generalize is 
-        ultimately reflected in the capacity to produce new configurations consistent 
-        with the learned structure.
-    </p>
-
-    <p style="margin-top: 15px;">
-        I am particularly interested in studying these connections through the 
-        combination of <strong>Statistical Learning Theory, Information Theory, 
-        Statistical Mechanics, and Deep Generative Models</strong>, with the broader 
-        goal of understanding learning as a dynamical and emergent phenomenon.
-    </p>
-</div>
+                <details class="accordion">
+                    <summary>
+                        <span class="accordion-icon">🧠</span>
+                        <span class="accordion-title">Toward a Theory of Learning<span class="accordion-subtitle">My broader research vision</span></span>
+                        <span class="chevron">▾</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p>My broader research interest is the development of a <strong>general theory of learning</strong>: a mathematical framework capable of explaining how artificial and biological systems extract structure from information and develop internal representations of the underlying phenomena.</p>
+                        <p>From this perspective, I see <strong>Information Theory</strong> as a fundamental language for understanding learning. A learning system receives information about a complex underlying structure, and the central question is how this information is transformed into an internal representation that preserves relevant structure while discarding irrelevant variability.</p>
+                        <p>This perspective naturally connects <strong>information, representation, generalization, and generation</strong>. Statistical Learning Theory provides a framework for understanding how the structure captured by a learned representation allows a model to generalize beyond the specific observations from which it learned. In generative models, this ability to generalize is ultimately reflected in the capacity to produce new configurations consistent with the learned structure.</p>
+                        <p>I am particularly interested in studying these connections through the combination of <strong>Statistical Learning Theory, Information Theory, Statistical Mechanics, and Deep Generative Models</strong>, with the broader goal of understanding learning as a dynamical and emergent phenomenon.</p>
+                    </div>
+                </details>
+            </div>
 
             <div class="project-item">
                 <h3>Academic Projects</h3>
-                <p style="margin-bottom: 20px;">A selection of my recent implementations and research reports:</p>
-                <ul class="project-links">
-                    <li>
-                        <span class="badge">BSc Thesis</span>
-                        <strong>Generative Learning of Diffusion Models:</strong> Analysis of the generative mechanisms of Diffusion Models through statistical mechanics and complex systems theory. The research characterizes the regimes in which effective learning occurs and studies the system's behavior through phase transition theory.
-                        <ul class="sub-links">
-                            <li>📄 <a href="Tesi_Lorenzo_Lausi_inglese_finale.pdf" target="_blank">Thesis</a></li>
-                            <li>📊 <a href="Tesi_Lorenzo_Lausi_presentazione.pptx" target="_blank">Presentation</a></li>
-                            <li>📓 <a href="https://colab.research.google.com/drive/1JSG1GwFdAOnDdOd8TowxLLAUsIECTOu6?usp=sharing" target="_blank">Notebook</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Earthquake ML: Physics-Driven P for S-Wave Forecasting:</strong> Implementation and research report on Machine Learning models.
-                        <ul class="sub-links">
-                            <li>📄 <a href="Lorenzo_Lausi_EQML.pdf" target="_blank">Report</a></li>
-                            <li>📓 <a href="https://colab.research.google.com/drive/1D7RwJjpFA-PRsKq1qWkDQF-ZaG2sthuw?usp=sharing" target="_blank">Notebook</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Network dynamics through mean field equations:</strong> Academic project focusing on mathematical methods and their computational applications.
-                        <ul class="sub-links">
-                            <li>📂 <a href="https://github.com/LorenzoLausi/LorenzoLausi.github.io/blob/main/progetto_metodi.ipynb" target="_blank">Project</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>MLP Unchained:</strong> Theoretical and empirical research exploring the predictive power of MLPs in Transformer architectures using the Kronecker operator.
-                        <ul class="sub-links">
-                            <li>📄 <a href="MLP_Unchained.pdf" target="_blank">Paper</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                <p style="margin-bottom: 5px;">A selection of my recent implementations and research reports:</p>
+
+                <details class="accordion">
+                    <summary>
+                        <span class="accordion-icon">💻</span>
+                        <span class="accordion-title">Academic Projects<span class="accordion-subtitle">Browse my recent work</span></span>
+                        <span class="chevron">▾</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <div class="projects-grid">
+                            <div class="project-card">
+                                <span class="badge" style="margin-bottom: 8px; align-self: flex-start;">BSc Thesis</span>
+                                <h4>Generative Learning of Diffusion Models</h4>
+                                <p>Analysis of the generative mechanisms of Diffusion Models through statistical mechanics and complex systems theory, characterizing the regimes of effective learning via phase transition theory.</p>
+                                <ul class="sub-links">
+                                    <li>📄 <a href="Tesi_Lorenzo_Lausi_inglese_finale.pdf" target="_blank">Thesis</a></li>
+                                    <li>📊 <a href="Tesi_Lorenzo_Lausi_presentazione.pptx" target="_blank">Presentation</a></li>
+                                    <li>📓 <a href="https://colab.research.google.com/drive/1JSG1GwFdAOnDdOd8TowxLLAUsIECTOu6?usp=sharing" target="_blank">Notebook</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="project-card">
+                                <h4>Earthquake ML: Physics-Driven P for S-Wave Forecasting</h4>
+                                <p>Implementation and research report on Machine Learning models for seismic wave forecasting.</p>
+                                <ul class="sub-links">
+                                    <li>📄 <a href="Lorenzo_Lausi_EQML.pdf" target="_blank">Report</a></li>
+                                    <li>📓 <a href="https://colab.research.google.com/drive/1D7RwJjpFA-PRsKq1qWkDQF-ZaG2sthuw?usp=sharing" target="_blank">Notebook</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="project-card">
+                                <h4>Network Dynamics through Mean Field Equations</h4>
+                                <p>Academic project focusing on mathematical methods and their computational applications.</p>
+                                <ul class="sub-links">
+                                    <li>📂 <a href="https://github.com/LorenzoLausi/LorenzoLausi.github.io/blob/main/progetto_metodi.ipynb" target="_blank">Project</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="project-card">
+                                <h4>MLP Unchained</h4>
+                                <p>Theoretical and empirical research exploring the predictive power of MLPs in Transformer architectures using the Kronecker operator.</p>
+                                <ul class="sub-links">
+                                    <li>📄 <a href="MLP_Unchained.pdf" target="_blank">Paper</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </details>
             </div>
         </section>
 
