@@ -122,7 +122,7 @@
             margin-bottom: 25px; 
         }
 
-        /* Stili tendina Tutoraggio */
+        /* Stili tendine (details/summary) */
         details {
             background-color: #f1f8f9;
             padding: 10px 15px;
@@ -130,6 +130,7 @@
             margin-top: 15px;
             border: 1px solid #cce3e6;
         }
+        details + details { margin-top: 12px; }
         summary {
             font-weight: bold;
             color: #005f73;
@@ -139,6 +140,21 @@
         }
         summary:hover { color: #0a9396; }
         details > ul { margin-top: 10px; padding-left: 20px; }
+        details > p { margin-top: 10px; }
+
+        /* Badge stile (Tesi, Date, ecc.) */
+        .badge {
+            background-color: #005f73;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-right: 8px;
+            vertical-align: middle;
+            display: inline-block;
+        }
+        .badge.news-date { background-color: #0a9396; }
 
         /* Bottoni e link */
         .cv-button {
@@ -164,6 +180,19 @@
         }
         a { color: #0a9396; text-decoration: none; font-weight: bold; }
         a:hover { text-decoration: underline; }
+
+        /* News list */
+        .news-list { list-style: none; }
+        .news-list > li {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .news-list > li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
 
         /* Responsive */
         @media (max-width: 850px) {
@@ -196,19 +225,18 @@
         <div class="tagline">Student of Mathematics x AI at @Sapienza</div>
         
         <ul class="nav-menu">
-            <li><a onclick="showSection('about', this)" class="active">About Me</a></li>
+            <li><a onclick="showSection('about', this)" class="active">About Me & News</a></li>
             <li><a onclick="showSection('positions', this)">Curriculum</a></li>
-            <li><a onclick="showSection('research', this)">Research Interests</a></li>
-            <li><a onclick="showSection('projects', this)">Academic Projects</a></li>
+            <li><a onclick="showSection('research', this)">Research & Projects</a></li>
         </ul>
     </aside>
 
     <!-- CONTENUTO PRINCIPALE -->
     <main class="main-content">
         
-        <!-- SEZIONE: ABOUT ME -->
+        <!-- SEZIONE: ABOUT ME & NEWS -->
         <section id="about" class="content-section active-section">
-            <h2>About Me</h2>
+            <h2>About Me & News</h2>
             <div class="project-item" style="border-left: none; padding: 15px 0; background: transparent; box-shadow: none;">
                 <p>Hi everyone, I'm Lorenzo Lausi.</p>
                 <p style="margin-top: 15px;">I am a BSc Graduate in <strong>Mathematical Sciences for Artificial Intelligence (SMIA)</strong> at Sapienza University of Rome (<strong>110/110 <em>cum laude</em></strong>).</p>
@@ -220,28 +248,69 @@
                 <p style="margin-top: 15px;">If you would like to dive deeper into my background and technical skills, you may check this old version of my CV:</p>
                 <a href="Lorenzo_Lausi_CV.pdf" target="_blank" class="cv-button">View my short CV</a>
             </div>
+
+            <h3 style="margin-top: 10px;">Latest News</h3>
+            <div class="project-item">
+                <ul class="news-list">
+                    <li>
+                        <span class="badge news-date">11 Sep 2026</span>
+                        <strong>Seminar: AI-Driven Design of Enzymes and Antibodies</strong>
+                        <p style="margin-top: 10px;">Dr. Danny J. Diaz (University of Texas at Austin & IFML) presented his work on Generative AI for protein design, covering the design of enzymes and antibodies through generative models.</p>
+                        <p style="margin-top: 10px;"><strong>When:</strong> Friday 11 September 2026, 14:45<br>
+                        <strong>Where:</strong> Third Floor, Aula III, Edificio CU002 (Edificio di Scienze Statistiche), Città Universitaria</p>
+                        <p style="margin-top: 10px;">🔗 <a href="https://forms.gle/FSZYHc3p5cvM72jL6" target="_blank">Registration form</a></p>
+                    </li>
+                    <li>
+                        <span class="badge">BSc Thesis</span>
+                        <strong>Analysis of the Generative Learning of Diffusion Models through Statistical Mechanics and Complex Systems Theory</strong>
+                        <p style="margin-top: 10px;">My bachelor's thesis, in which I study the generative mechanisms of Diffusion Models, characterizing the regimes in which effective learning occurs through tools from statistical mechanics and phase transition theory.</p>
+                        <p style="margin-top: 10px;">📄 <a href="Tesi_Lorenzo_Lausi_inglese_finale.pdf" target="_blank">Read the Thesis</a></p>
+                    </li>
+                </ul>
+            </div>
         </section>
 
-        <!-- SEZIONE: POSITIONS & NEWS -->
+        <!-- SEZIONE: CURRICULUM -->
         <section id="positions" class="content-section">
             <h2>Curriculum</h2>
             
             <div class="project-item">
                 <h3>Current Positions</h3>
-                <ul style="margin-left: 20px;">
-                    <li style="margin-bottom: 10px;"><strong>[2026 - Present]:</strong> Member of the AI Committee at the <a href="#" target="_blank">Dipartimento di Matematica Guido Castelnuovo</a> | ✉️ <a href="mailto:commissione-ia@mat.uniroma1.it">commissione-ia@mat.uniroma1.it</a></li>
-                    <li style="list-style: none; margin-left: -20px;">
-                        <details>
-                            <summary>[2026 - Present]: Academic Tutor - Machine Learning for Signal Processing</summary>
-                            <ul>
-                                <li><strong>Course details:</strong> <a href="https://danilocomminiello.site.uniroma1.it/teaching/mlsp" target="_blank">MLSP Official Page</a></li>
-                                <li>In collaboration with Michele Capponi: (<a href="mailto:capponi.1997425@studenti.uniroma1.it">capponi.1997425@studenti.uniroma1.it</a>).</li>
-                                <li><strong>Our contribution:</strong> <a href="https://github.com/kpnss/MLSP_notebook_review" target="_blank">GitHub Repository</a></li>
-                                <li><strong>Classroom code:</strong> Access code: <code>gajsihsp</code></li>
-                            </ul>
-                        </details>
-                    </li>
-                </ul>
+
+                <details>
+                    <summary>[2026 - Present]: Member of the AI Committee at the Dipartimento di Matematica Guido Castelnuovo</summary>
+                    <p>Contributed to discussions on AI-related academic and departmental activities at the Department of Mathematics, Sapienza University.</p>
+                    <p style="margin-top: 8px;">✉️ <a href="mailto:commissione-ia@mat.uniroma1.it">commissione-ia@mat.uniroma1.it</a></p>
+                </details>
+
+                <details>
+                    <summary>[2026 - Present]: Academic Tutor - Machine Learning for Signal Processing</summary>
+                    <ul>
+                        <li><strong>Course details:</strong> <a href="https://danilocomminiello.site.uniroma1.it/teaching/mlsp" target="_blank">MLSP Official Page</a></li>
+                        <li>In collaboration with Michele Capponi: (<a href="mailto:capponi.1997425@studenti.uniroma1.it">capponi.1997425@studenti.uniroma1.it</a>).</li>
+                        <li><strong>Our contribution:</strong> <a href="https://github.com/kpnss/MLSP_notebook_review" target="_blank">GitHub Repository</a></li>
+                        <li><strong>Classroom code:</strong> Access code: <code>gajsihsp</code></li>
+                    </ul>
+                </details>
+            </div>
+
+            <div class="project-item">
+                <h3>Education</h3>
+
+                <details>
+                    <summary>[2026 - Present]: MSc in Physics of Complex Systems — International Track, Politecnico di Torino</summary>
+                    <p>International Master's programme in Physics of Complex Systems (LM-44), combining advanced training in statistical physics, stochastic processes, quantum physics, and computational methods.</p>
+                    <p style="margin-top: 8px;">International double-degree programme across Trieste, Turin, and Paris.</p>
+                </details>
+
+                <details>
+                    <summary>[Oct 2023 - Jul 2026]: Bachelor's Degree in Mathematical Sciences for Artificial Intelligence, Sapienza University of Rome</summary>
+                    <ul>
+                        <li>Graduated 110/110 <em>cum laude</em>.</li>
+                        <li>Bachelor's thesis: <em>Analysis of the Generative Learning of Diffusion Models through Statistical Mechanics and Complex Systems Theory</em>.</li>
+                        <li>GPA: 29.5/30.</li>
+                    </ul>
+                </details>
             </div>
 
             <div class="project-item" style="border-left-color: #666;">
@@ -252,31 +321,106 @@
             </div>
         </section>
         
-        <!-- SEZIONE: RESEARCH INTERESTS -->
+        <!-- SEZIONE: RESEARCH & ACADEMIC PROJECTS -->
         <section id="research" class="content-section">
-            <h2>Research Interests & Technical Focus</h2>
-            <div class="project-item">
-                <p>During my studies, I have become increasingly fascinated by <strong>Learning Theory</strong> and the generative capabilities of Deep Learning—the power to create something new from acquired knowledge.</p>
-                <p style="margin-top: 15px;">Specifically, my current research focuses on finding ways to explain how optimizers learn through the lens of <strong>Statistical Learning Theory</strong>. I am investigating how the Test Loss varies as a function of different hyperparameters—such as architecture choice, parameter count, learning rate, and training duration—in complex architectures like Diffusion Models.</p>
-                
-                <p style="margin-top: 15px;">My core areas of investigation include:</p>
-                <ul style="margin-top: 15px; padding-left: 20px;">
-                    <li style="margin-bottom: 8px;"><strong>Statistical Learning Theory & Optimization:</strong> Analyzing how optimizers learn and how Test Loss scales with hyperparameters in Generative AI.</li>
-                    <li style="margin-bottom: 8px;"><strong>Statistical Mechanics & Deep Learning:</strong> Analytical explanation of neural networks and understanding their learning processes through statistical physics.</li>
-                    <li style="margin-bottom: 8px;"><strong>Mathematical Modeling & PDEs:</strong> Study and application of Partial Differential Equations (PDEs) within AI models.</li>
-                    <li><strong>Signal Processing & Denoising:</strong> Exploration of SOTA generative approaches operating in the time-frequency domain, with a specific focus on <em>denoising</em> techniques.</li>
-                </ul>
-            </div>
-        </section>
+            <h2>Research Interests & Academic Projects</h2>
 
-        <!-- SEZIONE: ACADEMIC PROJECTS -->
-        <section id="projects" class="content-section">
-            <h2>Academic Projects</h2>
             <div class="project-item">
+    <h3>Research Interests & Technical Focus</h3>
+
+    <p>
+        During my studies, I have become increasingly interested in understanding 
+        <strong>how learning emerges in complex artificial systems</strong>, particularly 
+        in Deep Generative Models. My recent work has focused on Diffusion Models, 
+        studying their learning dynamics through the combined perspectives of 
+        <strong>Statistical Learning Theory, Optimization, and Statistical Mechanics</strong>.
+    </p>
+
+    <p style="margin-top: 15px;">
+        My current research investigates how learning depends on different aspects of 
+        model and training dynamics, such as architecture, parameter count, learning 
+        rate, and training duration, and how these factors shape the resulting 
+        generalization and generative capabilities.
+    </p>
+
+    <p style="margin-top: 20px;"><strong>Core Areas</strong></p>
+
+    <ul style="margin-top: 15px; padding-left: 20px;">
+        <li style="margin-bottom: 8px;">
+            <strong>Statistical Learning Theory & Optimization:</strong>
+            Understanding generalization, learning dynamics, and how optimization 
+            shapes the behavior of complex models.
+        </li>
+        <li style="margin-bottom: 8px;">
+            <strong>Statistical Mechanics of Learning:</strong>
+            Studying learning as an emergent phenomenon through the mathematical 
+            framework of statistical physics and complex systems.
+        </li>
+        <li style="margin-bottom: 8px;">
+            <strong>Information Theory & Learning:</strong>
+            Investigating how information is extracted and represented, and how 
+            relevant structure can be distinguished from irrelevant variability.
+        </li>
+        <li style="margin-bottom: 8px;">
+            <strong>Deep Generative Models:</strong>
+            Understanding how learned representations of complex data distributions 
+            enable models to generalize and generate new configurations.
+        </li>
+        <li style="margin-bottom: 8px;">
+            <strong>Mathematical Modeling & Dynamical Systems:</strong>
+            Using mathematical models, stochastic processes, and differential 
+            equations to describe learning and complex systems.
+        </li>
+        <li>
+            <strong>Signal Processing & Scientific Machine Learning:</strong>
+            Exploring machine learning methods for extracting structure from 
+            complex and noisy physical signals.
+        </li>
+    </ul>
+
+    <p style="margin-top: 25px;">
+        <strong>Toward a Theory of Learning</strong>
+    </p>
+
+    <p style="margin-top: 15px;">
+        My broader research interest is the development of a 
+        <strong>general theory of learning</strong>: a mathematical framework capable 
+        of explaining how artificial and biological systems extract structure from 
+        information and develop internal representations of the underlying phenomena.
+    </p>
+
+    <p style="margin-top: 15px;">
+        From this perspective, I see <strong>Information Theory</strong> as a fundamental 
+        language for understanding learning. A learning system receives information 
+        about a complex underlying structure, and the central question is how this 
+        information is transformed into an internal representation that preserves 
+        relevant structure while discarding irrelevant variability.
+    </p>
+
+    <p style="margin-top: 15px;">
+        This perspective naturally connects <strong>information, representation, 
+        generalization, and generation</strong>. Statistical Learning Theory provides 
+        a framework for understanding how the structure captured by a learned 
+        representation allows a model to generalize beyond the specific observations 
+        from which it learned. In generative models, this ability to generalize is 
+        ultimately reflected in the capacity to produce new configurations consistent 
+        with the learned structure.
+    </p>
+
+    <p style="margin-top: 15px;">
+        I am particularly interested in studying these connections through the 
+        combination of <strong>Statistical Learning Theory, Information Theory, 
+        Statistical Mechanics, and Deep Generative Models</strong>, with the broader 
+        goal of understanding learning as a dynamical and emergent phenomenon.
+    </p>
+</div>
+
+            <div class="project-item">
+                <h3>Academic Projects</h3>
                 <p style="margin-bottom: 20px;">A selection of my recent implementations and research reports:</p>
                 <ul class="project-links">
                     <li>
-                        <span style="background-color: #005f73; color: white; padding: 3px 8px; border-radius: 5px; font-size: 0.85em; font-weight: bold; margin-right: 8px; vertical-align: middle;">BSc Thesis</span>
+                        <span class="badge">BSc Thesis</span>
                         <strong>Generative Learning of Diffusion Models:</strong> Analysis of the generative mechanisms of Diffusion Models through statistical mechanics and complex systems theory. The research characterizes the regimes in which effective learning occurs and studies the system's behavior through phase transition theory.
                         <ul class="sub-links">
                             <li>📄 <a href="Tesi_Lorenzo_Lausi_inglese_finale.pdf" target="_blank">Thesis</a></li>
