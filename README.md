@@ -1,5 +1,4 @@
 # 👨‍💻 Lorenzo Lausi
-> **Student of Mathematics x AI at Sapienza University of Rome**
 
 📫 **Contact me:** [lorilausi9@gmail.com](mailto:lorilausi9@gmail.com) | 📞 +39 389 890 5263
 
